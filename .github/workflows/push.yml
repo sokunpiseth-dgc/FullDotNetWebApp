@@ -20,10 +20,6 @@ jobs:
       - name: Convert sarif for uploading to GitHub
         uses: security-code-scan/security-code-scan-results-action@v1
         with:
-          sarif_directory: results
-        
+          command: dotnet tool run sarif transform --force --output sast-results.sarif --inline --pretty-print --tool.driver.version 5.6.7
       - name: Upload sarif
         uses: github/codeql-action/upload-sarif@v1
-        with:
-          name: scan_results
-          path: results
