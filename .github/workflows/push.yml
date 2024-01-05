@@ -18,7 +18,7 @@ jobs:
           msbuild
         
       - name: Convert sarif for uploading to GitHub
-        uses: security-code-scan/security-code-scan-results-action@main
+        uses: security-code-scan/security-code-scan-results-action@v1
         with:
           sarif_directory: results
         
