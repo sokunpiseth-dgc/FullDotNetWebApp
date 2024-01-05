@@ -1,0 +1,14 @@
+name: Security Scan Workflow
+on: [push, pull_request]
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install Security Code Scan
+        run: dotnet tool install --global security-scan
+      - name: List Global Tools
+        run: dotnet tool list --global
+      - name: Run Security Code Scan
+        run: security-scan FullDotNetWebApp.sln --export=sast-report.sarif
